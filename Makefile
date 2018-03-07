@@ -2,7 +2,7 @@ install:
 	npm install
 
 start:
-	npm run babel-node -- src/bin/games/brain-calc.js
+	npm run babel-node -- src/bin/games/brain-gcd.js
 
 publish:
 	npm publish
