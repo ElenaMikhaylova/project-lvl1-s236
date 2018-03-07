@@ -1,11 +1,9 @@
 import readlineSync from 'readline-sync';
+import { cons, car, cdr } from 'hexlet-pairs';
 
-export const startGame = (stringRules) => {
-  console.log('Welcome to the Brain Games!');
-  if (stringRules.length !== 0) {
-    console.log(stringRules);
-  }
-};
+export const makeGameElement = (question, answer) => cons(question, answer);
+const getQuestionGameElement = gameElement => car(gameElement);
+const getAnswerGameElement = gameElement => cdr(gameElement);
 
 export const getUserName = () => {
   const userName = readlineSync.question('\nMay I have your name? ');
@@ -18,26 +16,27 @@ const getUserAnswer = () => {
   return answer;
 };
 
-const getRandomInt = (min, max) => Math.floor(Math.random() * ((max - min) + 1)) + min;
+export const getRandomInt = (min, max) => Math.floor(Math.random() * ((max - min) + 1)) + min;
 
-export const gameEven = () => {
-  const minNumber = 1;
-  const maxNumber = 100;
+export const makeGame = (stringRules, getGameElement) => {
   const countGames = 3;
-  let randomNumber;
+  let gameElement;
+  let gameQuestion;
+  let gameAnswer;
   let userAnswer;
-  let correctAnswer;
-  startGame('Answer "yes" if number even otherwise answer "no".');
+  console.log('Welcome to the Brain Games!');
+  console.log(stringRules);
   const userName = getUserName();
   for (let counter = 1; counter <= countGames; counter += 1) {
-    randomNumber = getRandomInt(minNumber, maxNumber);
-    console.log(`Question: ${randomNumber}`);
-    correctAnswer = randomNumber % 2 === 0 ? 'yes' : 'no';
+    gameElement = getGameElement();
+    gameQuestion = getQuestionGameElement(gameElement);
+    console.log(`Question: ${gameQuestion}`);
+    gameAnswer = getAnswerGameElement(gameElement);
     userAnswer = getUserAnswer();
-    if (userAnswer === correctAnswer) {
+    if (userAnswer === gameAnswer) {
       console.log('Correct!');
     } else {
-      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.
+      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${gameAnswer}'.
 Let's try again, ${userName}!`);
       return;
     }

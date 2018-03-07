@@ -1,11 +1,12 @@
 {
   "name": "braingamesem",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "project 1",
   "main": "dist/index.js",
   "bin": {
-    "brain-games": "dist/bin/brain-games.js",
-    "brain-even": "dist/bin/brain-even.js"
+    "brain-games": "dist/bin/games/brain-games.js",
+    "brain-even": "dist/bin/games/brain-even.js",
+    "brain-calc": "dist/bin/games/brain-calc.js"
   },
   "files": [
     "dist"
@@ -30,6 +31,7 @@
     "eslint-plugin-import": "^2.9.0"
   },
   "dependencies": {
+    "hexlet-pairs": "^1.0.5",
     "readline-sync": "^1.4.9"
   }
 }
