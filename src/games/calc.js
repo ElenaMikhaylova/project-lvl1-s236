@@ -1,6 +1,5 @@
-#!/usr/bin/env node
 
-import { makeGame, makeGameElement, getRandomInt } from '../..';
+import { makeGame, makeGameElement, getRandomInt } from '..';
 
 const getElementGameCalc = () => {
   const minRandomNumber = 1;
@@ -24,9 +23,7 @@ const getElementGameCalc = () => {
   return makeGameElement(question, String(answer));
 };
 
-const makeGameCalc = () => {
+export default () => {
   const rules = 'What is the result of the expression?';
   makeGame(rules, getElementGameCalc);
 };
-
-makeGameCalc();

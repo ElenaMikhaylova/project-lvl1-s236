@@ -1,5 +1,4 @@
-#!/usr/bin/env node
-import { makeGame, makeGameElement, getRandomInt } from '../..';
+import { makeGame, makeGameElement, getRandomInt } from '..';
 
 const getElementGameEven = () => {
   const minRandomNumber = 1;
@@ -9,9 +8,7 @@ const getElementGameEven = () => {
   return makeGameElement(question, answer);
 };
 
-const makeGameEven = () => {
+export default () => {
   const rules = 'Answer "yes" if number even otherwise answer "no".';
   makeGame(rules, getElementGameEven);
 };
-
-makeGameEven();

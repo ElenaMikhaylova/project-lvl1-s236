@@ -1,6 +1,4 @@
-#!/usr/bin/env node
-
-import { makeGame, makeGameElement, getRandomInt } from '../..';
+import { makeGame, makeGameElement, getRandomInt } from '..';
 
 const getGCD = (num1, num2) => {
   const a = Math.max(num1, num2);
@@ -21,9 +19,7 @@ const getElementGameGCD = () => {
   return makeGameElement(question, String(answer));
 };
 
-const makeGameGCD = () => {
+export default () => {
   const rules = 'Find the greatest common divisor of given numbers.';
   makeGame(rules, getElementGameGCD);
 };
-
-makeGameGCD();
