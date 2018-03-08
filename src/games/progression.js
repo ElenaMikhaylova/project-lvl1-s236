@@ -1,5 +1,7 @@
 import { makeGame, makeGameElement, getRandomInt } from '..';
 
+const getProgressionElement = (start, step, index) => start + (step * (index - 1));
+
 const getProgressionString = (start, step, length, skip) => {
   const iter = (index, acc) => {
     if (index > length) {
@@ -9,7 +11,7 @@ const getProgressionString = (start, step, length, skip) => {
     if (index === skip) {
       current = '..';
     } else {
-      current = String(start + (step * (index - 1)));
+      current = getProgressionElement(start, step, index);
     }
     return iter(index + 1, index === 1 ? current : `${acc} ${current}`);
   };
@@ -24,7 +26,7 @@ const getElementGameProgression = () => {
   const lengthProgression = 10;
   const skipIndex = getRandomInt(1, lengthProgression);
   const question = getProgressionString(startNumber, stepProgression, lengthProgression, skipIndex);
-  const answer = startNumber + (stepProgression * (skipIndex - 1));
+  const answer = getProgressionElement(startNumber, stepProgression, skipIndex);
   return makeGameElement(question, String(answer));
 };
 

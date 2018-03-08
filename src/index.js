@@ -20,26 +20,26 @@ export const getRandomInt = (min, max) => Math.floor(Math.random() * ((max - min
 
 export const makeGame = (stringRules, getGameElement) => {
   const countGames = 3;
-  let gameElement;
-  let gameQuestion;
-  let gameAnswer;
-  let userAnswer;
   console.log('Welcome to the Brain Games!');
   console.log(stringRules);
   const userName = getUserName();
-  for (let counter = 1; counter <= countGames; counter += 1) {
-    gameElement = getGameElement();
-    gameQuestion = getQuestionGameElement(gameElement);
-    console.log(`Question: ${gameQuestion}`);
-    gameAnswer = getAnswerGameElement(gameElement);
-    userAnswer = getUserAnswer();
+  const makeGameElements = (index = 1) => {
+    if (index > countGames) {
+      return true;
+    }
+    const gameElement = getGameElement();
+    console.log(`Question: ${getQuestionGameElement(gameElement)}`);
+    const gameAnswer = getAnswerGameElement(gameElement);
+    const userAnswer = getUserAnswer();
     if (userAnswer === gameAnswer) {
       console.log('Correct!');
-    } else {
-      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${gameAnswer}'.
-Let's try again, ${userName}!`);
-      return;
+      return makeGameElements(index + 1);
     }
+    console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${gameAnswer}'.
+Let's try again, ${userName}!`);
+    return false;
+  };
+  if (makeGameElements()) {
+    console.log(`Congratulations, ${userName}!`);
   }
-  console.log(`Congratulations, ${userName}!`);
 };
