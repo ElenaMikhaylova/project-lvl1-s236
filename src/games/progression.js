@@ -7,12 +7,7 @@ const getProgressionString = (start, step, length, skip) => {
     if (index > length) {
       return acc;
     }
-    let current;
-    if (index === skip) {
-      current = '..';
-    } else {
-      current = getProgressionElement(start, step, index);
-    }
+    const current = index !== skip ? getProgressionElement(start, step, index) : '..';
     return iter(index + 1, index === 1 ? current : `${acc} ${current}`);
   };
   return iter(1, '');
@@ -27,7 +22,7 @@ const getElementGameProgression = () => {
   const skipIndex = getRandomInt(1, lengthProgression);
   const question = getProgressionString(startNumber, stepProgression, lengthProgression, skipIndex);
   const answer = getProgressionElement(startNumber, stepProgression, skipIndex);
-  return makeGameElement(question, String(answer));
+  return makeGameElement(question, answer);
 };
 
 export default () => {

@@ -23,17 +23,17 @@ export const makeGame = (stringRules, getGameElement) => {
   console.log('Welcome to the Brain Games!');
   console.log(stringRules);
   const userName = getUserName();
-  const makeGameElements = (index = 1) => {
-    if (index > countGames) {
+  const makeGameElements = (gameCounter = 1) => {
+    if (gameCounter > countGames) {
       return true;
     }
     const gameElement = getGameElement();
     console.log(`Question: ${getQuestionGameElement(gameElement)}`);
     const gameAnswer = getAnswerGameElement(gameElement);
     const userAnswer = getUserAnswer();
-    if (userAnswer === gameAnswer) {
+    if (userAnswer === String(gameAnswer)) {
       console.log('Correct!');
-      return makeGameElements(index + 1);
+      return makeGameElements(gameCounter + 1);
     }
     console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${gameAnswer}'.
 Let's try again, ${userName}!`);

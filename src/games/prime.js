@@ -15,7 +15,7 @@ const getElementGamePrime = () => {
   const maxRandomNumber = 50;
   const question = getRandomInt(minRandomNumber, maxRandomNumber);
   const answer = isPrime(question) ? 'yes' : 'no';
-  return makeGameElement(question, String(answer));
+  return makeGameElement(question, answer);
 };
 
 export default () => {

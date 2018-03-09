@@ -4,23 +4,15 @@ import { makeGame, makeGameElement, getRandomInt } from '..';
 const getElementGameCalc = () => {
   const minRandomNumber = 1;
   const maxRandomNumber = 100;
-  const firstOperand = getRandomInt(minRandomNumber, maxRandomNumber);
-  const secondOperand = getRandomInt(minRandomNumber, maxRandomNumber);
+  const operand1 = getRandomInt(minRandomNumber, maxRandomNumber);
+  const operand2 = getRandomInt(minRandomNumber, maxRandomNumber);
   const signNumber = getRandomInt(1, 3);
-  let sign;
-  let answer;
   if (signNumber === 1) {
-    sign = '+';
-    answer = firstOperand + secondOperand;
+    return makeGameElement(`${operand1} + ${operand2}`, operand1 + operand2);
   } else if (signNumber === 2) {
-    sign = '-';
-    answer = firstOperand - secondOperand;
-  } else {
-    sign = '*';
-    answer = firstOperand * secondOperand;
+    return makeGameElement(`${operand1} - ${operand2}`, operand1 - operand2);
   }
-  const question = `${firstOperand} ${sign} ${secondOperand}`;
-  return makeGameElement(question, String(answer));
+  return makeGameElement(`${operand1} * ${operand2}`, operand1 * operand2);
 };
 
 export default () => {

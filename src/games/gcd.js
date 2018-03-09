@@ -12,11 +12,11 @@ const getGCD = (num1, num2) => {
 const getElementGameGCD = () => {
   const minRandomNumber = 1;
   const maxRandomNumber = 100;
-  const firstOperand = getRandomInt(minRandomNumber, maxRandomNumber);
-  const secondOperand = getRandomInt(minRandomNumber, maxRandomNumber);
-  const question = `${firstOperand} ${secondOperand}`;
-  const answer = getGCD(firstOperand, secondOperand);
-  return makeGameElement(question, String(answer));
+  const operand1 = getRandomInt(minRandomNumber, maxRandomNumber);
+  const operand2 = getRandomInt(minRandomNumber, maxRandomNumber);
+  const question = `${operand1} ${operand2}`;
+  const answer = getGCD(operand1, operand2);
+  return makeGameElement(question, answer);
 };
 
 export default () => {
